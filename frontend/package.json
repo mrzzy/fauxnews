@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mrzzy/fauxnews#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-react-css-modules": "^3.4.2",
