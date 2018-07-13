@@ -27,9 +27,11 @@ def load_model(name_prefix="sklearn_linearsvc_model", suffix=".pickle"):
 # values:
 # titles - title of the article
 # text - text of the article 
+# img url - image url of the article
 def parse_urls(urls):
     titles = []
     texts = []
+    img_urls = []
     for url in urls:
         # Retrieve contents of url
         r = requests.get(url)
@@ -39,11 +41,16 @@ def parse_urls(urls):
         text = ""
         for paragraph in soup.find_all("p"):
             text += "\n{}".format(paragraph.string)
-
+        
+            
+        imgs = soup.find_all("img")
+        if len(imgs) > 0:
+            img_urls.append(imgs[0].get("src"))
         titles.append(soup.title.string)
-        texts.append (text)
+        texts.append(text)
+        
     
-    return titles, texts
+    return titles, texts, img_urls
     
 # Predict the legitmacy for the given news article specfied by the title and text
 # returns a list of prediction results, with 1 makring fake news
@@ -65,10 +72,11 @@ if __name__ == "__main__":
     urls.loc[:,"url"]
  
     # Add parsed data to dataframe
-    titles, texts = parse_urls(urls)
+    titles, texts, img_urls = parse_urls(urls)
     df["title"] = titles
     df["text"] = texts
+    df["img_url"] = img_urls
     df["fake"] = evaluate_legitmacy(titles, texts)
 
     
-    df.to_csv("menu.csv")
+    df.to_csv("../backend/menu.csv")
