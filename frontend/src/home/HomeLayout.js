@@ -37,7 +37,8 @@ export default class HomeLayout extends React.Component {
                 var d = response.data[i];
                 layouts.push(
                     <NewsBlockLayout key={i} thumbnailUrl={d["thumbnail_url"]}
-                        timestamp={d["datePublished"]} headline={d["title"]} />
+                        timestamp={d["datePublished"]} headline={d["title"]}
+                        excerpt={d["excerpt"]} />
                 );
             }
             this.setState({ newLayouts: layouts });

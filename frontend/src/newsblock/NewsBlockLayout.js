@@ -3,6 +3,7 @@ import React from "react";
 import NewsThumbnail from "./NewsThumbnail";
 import NewsTimestamp from "./NewsTimestamp";
 import NewsHeadline from "./NewsHeadline";
+import NewsExcerpt from "./NewsExcerpt";
 import "./newsBlockLayout.css";
 
 export default class NewsBlockLayout extends React.Component {
@@ -16,6 +17,7 @@ export default class NewsBlockLayout extends React.Component {
                 {thumbnail}
                 <NewsTimestamp>{this.props.timestamp}</NewsTimestamp>
                 <NewsHeadline>{this.props.headline}</NewsHeadline>
+                <NewsExcerpt>{this.props.excerpt}</NewsExcerpt>
             </div>
         );
     }
