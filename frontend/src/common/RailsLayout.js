@@ -11,7 +11,7 @@ export default class RailsLayout extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row" styleName="container">
                 <div className="col-md-3" styleName="column">
                     {this.props.children[0]}
                 </div>
