@@ -11,7 +11,8 @@ def get_articles(request):
             "author": "Pseudononymous Bosch",
             "datePublished": "2018-07-13 8:00:00",
             "excerpt": "The <i>du fromage</i> law has recently been passed in
-            20 different counties."
+            20 different counties.",
+            "thumbnail_url": "https://www.google.com",
         }
     ]
     """
