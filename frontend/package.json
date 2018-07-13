@@ -1,0 +1,38 @@
+{
+  "name": "faux-news",
+  "version": "1.0.0",
+  "description": "Totally legit online news.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --config webpack.config.js --mode development --watch",
+    "production": "webpack --config webpack.config.js --mode production",
+    "debug": "webpack --display-error-details"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrzzy/fauxnews.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrzzy/fauxnews/issues"
+  },
+  "homepage": "https://github.com/mrzzy/fauxnews#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-react-css-modules": "^3.4.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "webpack": "^4.16.0"
+  },
+  "devDependencies": {
+    "webpack-command": "^0.4.1"
+  }
+}
