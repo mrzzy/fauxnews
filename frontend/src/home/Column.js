@@ -23,7 +23,7 @@ export default class Column extends React.Component {
         for (var i=0; i<children.length; i++) {
             // Add border styles between the rows
             var style = "item-row";
-            if (i != children.length && children.length != 1) {
+            if ((i+1) != children.length) {
                 style += " border-bottom";
             }
 
