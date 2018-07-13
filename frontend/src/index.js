@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import HomeLayout from "./home/HomeLayout";
 
 class MainLayout extends React.Component {
     render() {
         return (
-            <div></div>
+            <HomeLayout />
         );
     }
 }

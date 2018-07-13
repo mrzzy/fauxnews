@@ -1,6 +1,6 @@
 import React from "react";
 
-import Subtitle from "./Subtitle";
+import Subtitle from "../common/Subtitle";
 import "./newsTimestamp.css";
 
 export default class NewsSubtitle extends React.Component {

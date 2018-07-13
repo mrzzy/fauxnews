@@ -1,6 +1,6 @@
 import React from "react";
 
-import Subtitle from "./Subtitle";
+import Subtitle from "../common/Subtitle";
 import "./faintSubtitle.css"
 
 export default class FaintSubtitle extends React.Component {

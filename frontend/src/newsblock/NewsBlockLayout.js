@@ -3,9 +3,9 @@ import React from "react";
 import NewsThumbnail from "./NewsThumbnail";
 import NewsTimestamp from "./NewsTimestamp";
 import NewsHeadline from "./NewsHeadline";
-import "./newsBlock.css";
+import "./newsBlockLayout.css";
 
-export default class NewsBlock extends React.Component {
+export default class NewsBlockLayout extends React.Component {
     render() {
         var thumbnail = null;
         if (this.props.thumbnailUrl) {
