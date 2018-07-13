@@ -49,7 +49,7 @@ def build_model():
 
 
 # Saves model with timestamp in filename
-def save_model(model, name_prefix="sklearn_linearsvc_text", suffix=".pickle"):
+def save_model(model, name_prefix="sklearn_linearsvc_model", suffix=".pickle"):
     # Make filename with timestamp
     now = datetime.now()
     fname = "./models/{}_{}_{}_{}{}".format(name_prefix, now.hour, now.minute, 
@@ -65,14 +65,30 @@ def preprocess_data(texts):
     
 if __name__ == "__main__":
     print("Loading data...")
+
     # Load data
-    df = pd.read_csv("./data/train.csv")
-    labels = df.loc[:,"label"].values
-    texts = df.loc[:,"text"].values.astype("U")
-    titles = df.loc[:,"title"].values.astype("U")
-        
-    #full_texts = [ "{}\n{}".format(titles[i], texts[i]) for i in range(len(labels)) ]
+    # Label lengend: Fake - 1, real - 0
+    df = pd.read_csv("./data/data.csv")
+    labels = df.loc[:,"Label"].values
+    labels = [ 0 if l == 1 else 1 for l in labels ] # invert labels to fit legend
+    texts = df.loc[:,"Body"].values.astype("U")
+    titles = df.loc[:,"Headline"].values.astype("U")
     
+    df = pd.read_csv("./data/data_2.csv")
+    labels = np.concatenate((df.loc[:,"label"].values, labels))
+    texts = np.concatenate((df.loc[:,"text"].values.astype("U"), texts))
+    titles = np.concatenate((df.loc[:,"title"].values.astype("U"), titles))
+    
+    df = pd.read_csv("./data/data_3.csv")
+    labels_2 = df.loc[:,"label"].values
+    labels_2 = [ 1 if LABEL == "FAKE" else 0 for LABEL in labels_2 ] # invert labels to fit legend
+    labels = np.concatenate((labels_2, labels))
+    texts = np.concatenate((df.loc[:,"text"].values.astype("U"), texts))
+    titles = np.concatenate((df.loc[:,"title"].values.astype("U"), titles))
+        
+    full_texts = [ "{}\n{}".format(titles[i], texts[i]) for i in range(len(labels)) ]
+    
+    print("No. of samples: ", len(labels))
     
     train_inputs, train_outputs, test_inputs, test_outputs = \
             split_test_train(texts, labels)
@@ -81,6 +97,8 @@ if __name__ == "__main__":
     vectorizer.fit(train_inputs)
     train_inputs = preprocess_data(train_inputs)
     test_inputs = preprocess_data(test_inputs)
+
+    save_model(vectorizer, "sklearn_linearsvc_vectorizer")
 
     # Train Model 
     print("Training model...")
