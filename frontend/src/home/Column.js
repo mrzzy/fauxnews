@@ -21,14 +21,8 @@ export default class Column extends React.Component {
 
         var rows = [];
         for (var i=0; i<children.length; i++) {
-            // Add border styles between the rows
-            var style = "item-row";
-            if ((i+1) != children.length) {
-                style += " border-bottom";
-            }
-
             rows.push(
-                <div key={i} className="row" styleName={style}>
+                <div key={i} className="row" styleName="item-row">
                     {children[i]}
                 </div>
             );
