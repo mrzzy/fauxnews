@@ -1,0 +1,10 @@
+.search-bar {
+    width: 100%;
+    outline: none;
+    border: 0;
+}
+
+.search-again {
+    color: blue;
+    cursor: pointer;
+}

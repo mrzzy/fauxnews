@@ -2,7 +2,13 @@ from django.http import JsonResponse
 
 import pandas as pd
 
-df = pd.read_csv("../../menu.csv")
+df = pd.read_csv("../menu.csv")
+
+
+def truncate(text, length=200):
+    return text[:199] + "…"
+
+
 def get_articles(request):
     """Returns a JsonResponse of the articles in the following form:
     [
@@ -19,16 +25,20 @@ def get_articles(request):
     ]
     """
 
-
     data = []
     for index, entry in df.iterrows():
         if entry["fake"] == 1:
+            entry_text = entry["text"]
+            if not isinstance(entry_text, str):
+                entry_text = ""
+
             data.append({
                 "title": entry["title"],
                 "author": entry["author"],
                 "timestamp": entry["timestamp"],
-                "text": entry["text"],
-                "img_url": entry["img_url"],
+                "excerpt": truncate(entry_text),
+                "thumbnail_url": entry["img_url"],
+                "url": entry["url"],
             })
 
     return JsonResponse(data, safe=False)
