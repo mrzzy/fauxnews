@@ -2,6 +2,7 @@ from django.http import JsonResponse
 
 import pandas as pd
 
+df = pd.read_csv("../../menu.csv")
 def get_articles(request):
     """Returns a JsonResponse of the articles in the following form:
     [
@@ -18,8 +19,6 @@ def get_articles(request):
     ]
     """
 
-    df = pd.read_csv("menu.csv")
-    
 
     data = []
     for index, entry in df.iterrows():
@@ -27,9 +26,9 @@ def get_articles(request):
             data.append({
                 "title": entry["title"],
                 "author": entry["author"],
-                "datePublished": entry["timestamp"],
-                "excerpt": ("The <i>du fromage</i> law has recently been passed "
-                            "in 20 different counties.")
+                "timestamp": entry["timestamp"],
+                "text": entry["text"],
+                "img_url": entry["img_url"],
             })
 
     return JsonResponse(data, safe=False)
