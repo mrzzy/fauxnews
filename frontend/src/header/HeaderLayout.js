@@ -3,6 +3,8 @@ import React from "react";
 import Subtitle from "../common/Subtitle";
 import RailsLayout from "../common/RailsLayout";
 
+import SearchBar from "../search/SearchBar";
+
 import FaintSubtitle from "./FaintSubtitle";
 import ImageHeading from "./ImageHeading";
 
@@ -21,6 +23,7 @@ export default class HeaderLayout extends React.Component {
                         </RailsLayout>
                     </div>
                 <hr />
+                <SearchBar onSearch={this.props.searchOnClick} />
             </div>
         );
     }
