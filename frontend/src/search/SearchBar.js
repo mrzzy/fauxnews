@@ -12,15 +12,9 @@ export default class SearchBar extends React.Component {
 
     createSearch() {
         return (
-        <div className="input-group" styleName="search-bar">
-            <input className="form-control py-2 border-right-0 border"
-                type="search" placeholder="search" onKeyPress={this.handleOnKeyPress.bind(this)} />
-            <span className="input-group-append">
-                <div className="input-group-text bg-transparent">
-                    <i className="fa fa-search"></i>
-                </div>
-            </span>
-        </div>);
+            <input type="text" styleName="search-bar" placeholder="Find the most reliable news..."
+                onKeyPress={this.handleOnKeyPress.bind(this)} />
+        );
     }
 
     showSearch() {

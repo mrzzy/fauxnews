@@ -17,6 +17,7 @@ export default class HomeLayout extends React.Component {
         return (
             <div className="container">
                 <HeaderLayout />
+                <br />
                 <RailsNewsLayout>
                     {this.state.shownLayouts}
                 </RailsNewsLayout>

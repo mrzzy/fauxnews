@@ -24,6 +24,7 @@ export default class HeaderLayout extends React.Component {
                     </div>
                 <hr />
                 <SearchBar onSearch={this.props.searchOnClick} />
+                <hr />
             </div>
         );
     }
