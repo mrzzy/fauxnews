@@ -6,7 +6,17 @@ df = pd.read_csv("../menu.csv")
 
 
 def truncate(text, length=200):
-    return text[:199] + "…"
+    if len(text) > length:
+        return text[:199] + "…"
+    else:
+        return text
+
+
+def convertToStr(text):
+    if not isinstance(text, str):
+        return ""
+    else:
+        return text
 
 
 def get_articles(request):
@@ -28,16 +38,13 @@ def get_articles(request):
     data = []
     for index, entry in df.iterrows():
         if entry["fake"] == 1:
-            entry_text = entry["text"]
-            if not isinstance(entry_text, str):
-                entry_text = ""
 
             data.append({
                 "title": entry["title"],
-                "author": entry["author"],
-                "timestamp": entry["timestamp"],
-                "excerpt": truncate(entry_text),
-                "thumbnail_url": entry["img_url"],
+                "author": convertToStr(entry["author"]),
+                "timestamp": convertToStr(entry["timestamp"]),
+                "excerpt": truncate(convertToStr(entry["text"])),
+                "thumbnail_url": convertToStr(entry["img_url"]),
                 "url": entry["url"],
             })
 
