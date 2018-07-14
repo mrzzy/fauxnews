@@ -35,7 +35,7 @@ export default class Column extends React.Component {
         }
 
         return (
-            <div>{rows}</div>
+            <div styleName="container">{rows}</div>
         );
     }
 }
