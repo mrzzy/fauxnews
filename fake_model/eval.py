@@ -128,12 +128,17 @@ if __name__ == "__main__":
         if entry[0] != None and not "404" in entry[0].lower() and not "not found" in entry[0].lower() and entry[1] != None and not entry[0] in title_set:
             urls.append(url)
             titles.append(entry[0])
-            texts.append(entry[1])
-            img_urls.append(entry[2])
+            texts.append(entry[1].replace("None", ""))
+
+            if entry[2].startswith("http"):
+                img_urls.append(entry[2])
+            else:
+                img_urls.append("")
+
             timestamps.append(filtered_timestamps[i])
             authors.append(filtered_authors[i])
             title_set.add(entry[0])
-            
+        
         
     assert len(urls) == len(titles) == len(texts) == len(img_urls) == len(timestamps) == len(authors)
 
