@@ -32,7 +32,7 @@ def scroll_to(driver, location):
 def get_htmls(driver, urls):
     for url in urls:
         driver.get(url)
-        yield driver.get_attribute("innerHTML")
+        yield driver.page_source
 
 
 def get_outer_card(element):
