@@ -92,16 +92,19 @@ driver.get("https://www.facebook.com")
 # Scroll to the bottom, to get more feed
 data = []
 current_scroll = 0
+n = 0
 try:
     while True:
         elements = driver.find_elements_by_xpath(not_facebook_xpath)
         data.extend(process_elements(elements))
-        if len(elements) < 400:
+        if len(elements) < 1000:
             scroll_to(driver, current_scroll+1000)
             current_scroll += 1000
             time.sleep(1)
         else:
-            break
+                break
+        n += 1
+        print("{}%...".format(n / 1000 * 100))
 except KeyboardInterrupt:
     pass
 
