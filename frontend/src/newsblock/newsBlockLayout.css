@@ -2,3 +2,19 @@
     padding: 10px 5px;
     width: 100%;
 }
+
+.header-anchor, 
+.header-anchor:link,
+.header-anchor:hover,
+.header-anchor:visited,
+.header-anchor:active {
+    text-decoration: none
+}
+
+.excerpt-anchor, 
+.excerpt-anchor:link,
+.excerpt-anchor:hover,
+.excerpt-anchor:visited,
+.excerpt-anchor:active {
+    text-decoration: none;
+}
